@@ -6,7 +6,7 @@
   "scripts": {
     "build": "tsc",
     "clean": "rimraf dist",
-    "start": "npm run build && node ./dist/main.js",
+    "start": "node ./dist/main.js",
     "dev": "nodemon src/main.ts"
   },
   "keywords": [],
