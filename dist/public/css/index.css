@@ -15,6 +15,7 @@ body{
 }
 .bg-container{
     margin-left: 78px;
+    overflow-x: hidden;
 }
 
 header{

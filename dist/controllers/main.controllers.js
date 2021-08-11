@@ -5,19 +5,23 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.productLink = exports.productCards = exports.verDatos = exports.incluirDatos = exports.getData = exports.createData = exports.mainPage = void 0;
 const Data_1 = __importDefault(require("../models/Data"));
-async function mainPage(req, res) {
-    res.render('index');
+async function mainPage(req, res, page) {
+    const top = await Data_1.default.find({ "top": "True" });
+    res.render(`${page}`, {
+        top
+    });
 }
 exports.mainPage = mainPage;
 async function createData(req, res) {
     console.log(req.body);
-    const { name, price, team, liga, year, imagePath, imagePath2, imagePath3 } = req.body;
+    const { name, price, team, liga, year, top, imagePath, imagePath2, imagePath3 } = req.body;
     const newData = {
         name,
         price,
         team,
         liga,
         year,
+        top,
         imagePath,
         imagePath2,
         imagePath3

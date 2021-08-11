@@ -7,6 +7,7 @@ const schema = new mongoose_1.Schema({
     team: String,
     liga: String,
     year: Number,
+    top: String,
     imagePath: String,
     imagePath2: String,
     imagePath3: String

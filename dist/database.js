@@ -36,6 +36,7 @@ async function startConnection() {
     }
     catch (e) {
         console.log(e);
+        console.log("Conexion fallida");
     }
 }
 exports.startConnection = startConnection;
