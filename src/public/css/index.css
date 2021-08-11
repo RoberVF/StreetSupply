@@ -8,6 +8,7 @@
     --light-white: #E8EAED;
     --dark-white: rgba(232, 234, 237, .4);
     scroll-behavior: smooth;
+    font-family: "Poppins";
 }
 body{
     background-color: var(--bg-color) !important;
