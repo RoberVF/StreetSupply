@@ -4,12 +4,15 @@ import fs from 'fs-extra'
 import path from 'path'
 
 export async function mainPage(req:Request, res:Response, page:string){
-    res.render(`${page}`)
+    const top= await Data.find({"top": "True"})
+    res.render(`${page}`, {
+        top
+    })
 }
 
 export async function createData(req:Request, res:Response){
     console.log(req.body)
-    const {name, price, team, liga, year, imagePath, imagePath2, imagePath3} = req.body
+    const {name, price, team, liga, year, top, imagePath, imagePath2, imagePath3} = req.body
     
     const newData= {
         name,
@@ -17,6 +20,7 @@ export async function createData(req:Request, res:Response){
         team,
         liga,
         year,
+        top,
         imagePath,
         imagePath2,
         imagePath3

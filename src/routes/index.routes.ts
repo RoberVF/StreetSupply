@@ -1,8 +1,6 @@
 import {Router, Request, Response} from 'express'
-import { createNull } from 'typescript'
 const router= Router()
 import {mainPage, getData, createData, incluirDatos, verDatos, productCards, productLink} from '../controllers/main.controllers'
-import Data from '../models/Data'
 
 router.route('/').get((req, res) => mainPage(req, res, "index"))
 router.route('/mobile').get((req, res) => mainPage(req, res, "mobile"))

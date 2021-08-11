@@ -5,6 +5,7 @@ const schema= new Schema({
     team: String,
     liga: String,
     year: Number,
+    top: String,
     imagePath: String,
     imagePath2: String,
     imagePath3: String
@@ -15,6 +16,7 @@ interface IData extends Document{
     team: string,
     liga: string,
     year: number,
+    top: string,
     imagePath: string,
     imagePath2: string,
     imagePath3: string
