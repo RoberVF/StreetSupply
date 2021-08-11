@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PSG</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+        integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+</head>
+
+<body class="d-flex justify-content-around mt-4">
+    <% equipoConcreto.forEach((item)=>{ %>
+        <div class="card" style="width: 18rem;">
+            <img class="card-image-top" src=<%=item.imagePath %> alt=<%= item.team%>>
+                <div class="card-body">
+                    <h5 class="card-title">
+                        <%= item.name %>, <%= item.team %>
+                    </h5>
+                    <p class="card-text">Year: <%= item.year %>
+                    </p>
+                    <p class="card-text"><i>Precio: <%= item.price %></i></p>
+                    <a href="<%= item.team %>/<%= item._id %>" class="btn btn-primary">Comprar</a>
+                </div>
+        </div>
+        <% }) %>
+
+</body>
+
+</html>
