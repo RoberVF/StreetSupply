@@ -1,30 +1,34 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap');
-
-*{
+* {
     --bg-color: #121212;
     --secondary-bg: #252525;
-    --light-purple: #7345ac;    
+    --light-purple: #7345ac;
     --high-purple: #523498;
     --light-white: #E8EAED;
     --dark-white: rgba(232, 234, 237, .4);
+    --dark-light-purple: rgba(115, 69, 172, .1);
     scroll-behavior: smooth;
     font-family: "Poppins";
 }
-body{
+
+body {
     background-color: var(--bg-color) !important;
 }
-.bg-container{
+
+.bg-container {
     margin-left: 78px;
     overflow-x: hidden;
 }
 
-header{
+header {
     position: relative;
-    }
-.header-image{
+}
+
+.header-image {
     width: calc(100vw - 78px);
 }
-.header-text{
+
+.header-text {
     display: flex;
     align-self: center;
     justify-content: center;
@@ -36,26 +40,29 @@ header{
     border: 1px solid transparent;
     border-radius: 12px;
     background-color: rgba(232, 234, 237, .8);
-
 }
-.header-text > div > h1{
+
+.header-text>div>h1 {
     font-size: 5rem;
     color: var(--secondary-bg);
     font-weight: 700;
 }
-.header-text > div > h1 > strong{
+
+.header-text>div>h1>strong {
     font-size: 5.5rem;
     text-transform: uppercase;
     color: var(--light-purple);
     font-weight: 900;
 }
-.header-text > div > p{
+
+.header-text>div>p {
     margin-top: 1.8rem;
     font-size: 1.3rem;
     letter-spacing: -.2px;
     margin-bottom: 2.3rem;
 }
-.header-text > div > a{
+
+.header-text>div>a {
     border: 1px solid transparent;
     border-radius: 12px;
     padding: .5rem 1rem;
@@ -63,14 +70,16 @@ header{
     background-color: var(--light-purple);
 }
 
-@media (max-width: 1300px){
-    .header-text{
+@media (max-width: 1300px) {
+    .header-text {
         background-color: rgba(232, 234, 237, .9);
         top: 41%;
         width: 80%;
         left: 10%;
     }
 }
+
+
 /* @media (max-width: 768px){
     .header-text{
         background-color: rgba(232, 234, 237, .65);
@@ -82,8 +91,9 @@ header{
         font-size: 3.2rem;
     }
 } */
-@media (max-width: 768px){
-    .header-text{
+
+@media (max-width: 768px) {
+    .header-text {
         display: none;
     }
 }

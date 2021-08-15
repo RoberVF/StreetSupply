@@ -1,0 +1,30 @@
+<h2 class="topSellersTitle">
+    Más Vendidos</h2>
+<div class="container" style="margin-bottom: 3rem;">
+    <!-- background de las tarjetas blanco para ocultar el fondo de la imagen -->
+    <% top.forEach((item)=>{ %>
+        <div class="card">
+            <div class="imgBx">
+                <img src=<%=item.imagePath %>>
+            </div>
+            <div class="contentBx">
+                <h2>
+                    <%= item.name %>,
+                        <%= item.team %>
+                </h2>
+                <div class="size">
+                    <h3>Size :</h3>
+                    <span>S</span>
+                    <span>M</span>
+                    <span>L</span>
+                    <span>XL</span>
+                </div>
+                <div class="price">
+                    <h3>Price :</h3>
+                    <span><%= item.price %>€</span>
+                </div>
+                <a href="#">Buy Now</a>
+            </div>
+        </div>
+        <% }) %>
+</div>
