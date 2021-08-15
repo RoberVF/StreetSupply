@@ -1,9 +1,11 @@
 import {Router, Request, Response} from 'express'
 const router= Router()
-import {mainPage, getData, createData, incluirDatos, verDatos, productCards, productLink} from '../controllers/main.controllers'
+import {mainPage, comprar, getData, createData, incluirDatos, verDatos, productCards, productLink} from '../controllers/main.controllers'
 
 router.route('/').get((req, res) => mainPage(req, res, "index"))
 router.route('/mobile').get((req, res) => mainPage(req, res, "mobile"))
+
+router.route('/comprar').get(comprar)
 
 router.route('/mostrarDatos').post(createData).get(getData)
 
@@ -15,7 +17,7 @@ router.route('/verDatos').get(verDatos)
 
 //Lista equipos
 const equipos= [
-    "PSG", "Lyon", 
+    "PSG", "Lyon", "City", "United"
 ]
 
 

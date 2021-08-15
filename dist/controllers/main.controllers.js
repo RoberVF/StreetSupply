@@ -3,17 +3,20 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.productLink = exports.productCards = exports.verDatos = exports.incluirDatos = exports.getData = exports.createData = exports.mainPage = void 0;
+exports.productLink = exports.productCards = exports.verDatos = exports.incluirDatos = exports.getData = exports.createData = exports.comprar = exports.mainPage = void 0;
 const Data_1 = __importDefault(require("../models/Data"));
 async function mainPage(req, res, page) {
-    const top = await Data_1.default.find({ "top": "True" });
+    const teamProduct = await Data_1.default.find({ "top": "True" });
     res.render(`${page}`, {
-        top
+        teamProduct
     });
 }
 exports.mainPage = mainPage;
+async function comprar(req, res) {
+    res.render("comprar");
+}
+exports.comprar = comprar;
 async function createData(req, res) {
-    console.log(req.body);
     const { name, price, team, liga, year, top, imagePath, imagePath2, imagePath3 } = req.body;
     const newData = {
         name,
@@ -51,19 +54,17 @@ async function verDatos(req, res) {
 }
 exports.verDatos = verDatos;
 async function productCards(req, res, equipo, liga) {
-    const equipoConcreto = await Data_1.default.find({ "team": `${equipo}` });
+    const teamProduct = await Data_1.default.find({ "team": `${equipo}` });
     const ligaConcreta = await Data_1.default.find({ "ligue": `${liga}` });
-    res.render(`teams/productCards`, {
+    res.render(`teams/cards`, {
         ligaConcreta,
-        equipoConcreto
+        teamProduct
     });
-    console.log(ligaConcreta, equipoConcreto);
 }
 exports.productCards = productCards;
 async function productLink(req, res) {
     const { id } = req.params;
     const product = await Data_1.default.findById(id);
-    console.log(product);
     res.render('teams/product', { product });
 }
 exports.productLink = productLink;
