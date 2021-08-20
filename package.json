@@ -2,7 +2,7 @@
   "name": "sttsupply",
   "version": "1.0.0",
   "description": "ecommerce",
-  "main": "index.js",
+  "main": "main.js",
   "scripts": {
     "build": "tsc",
     "clean": "rimraf dist",
