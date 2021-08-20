@@ -8,6 +8,7 @@ const schema = new mongoose_1.Schema({
     liga: String,
     year: Number,
     top: String,
+    type: String,
     imagePath: String,
     imagePath2: String,
     imagePath3: String

@@ -5,17 +5,30 @@ const router = express_1.Router();
 const main_controllers_1 = require("../controllers/main.controllers");
 router.route('/').get((req, res) => main_controllers_1.mainPage(req, res, "index"));
 router.route('/mobile').get((req, res) => main_controllers_1.mainPage(req, res, "mobile"));
-router.route('/comprar').get(main_controllers_1.comprar);
+router.route('/comprar').get((req, res) => main_controllers_1.page(req, res, "pages/comprar"));
+router.route('/ropa').get((req, res) => main_controllers_1.page(req, res, "pages/ropa"));
 router.route('/mostrarDatos').post(main_controllers_1.createData).get(main_controllers_1.getData);
 router.route('/incluir').get(main_controllers_1.incluirDatos);
 router.route('/verDatos').get(main_controllers_1.verDatos);
 //Lista equipos
 const equipos = [
-    "PSG", "Lyon", "City", "United"
+    "LIV", "CITY", "UNITED", "CHE", "ARS", "TOT",
+    "BAR", "RMA", "ATM",
+    "JUV", "INT", "ACM", "ROMA",
+    "PSG", "MAR", "LYON",
+    "DORT", "BAYERN", "LEIP"
 ];
-//productCards
+//lista types
+const types = [
+    "camisetas", "tracksuits", "cortavientos", "pantalones", "t-shirts", "training", "portero", "retro"
+];
+//productCards via teams
 for (let i of equipos) {
-    router.route(`/${i.toString()}`).get((req, res) => main_controllers_1.productCards(req, res, i.toString(), "ligue 1"));
+    router.route(`/${i.toString()}`).get((req, res) => main_controllers_1.productCards(req, res, i.toString(), ""));
+}
+//productCards via type
+for (let i of types) {
+    router.route(`/${i.toString()}`).get((req, res) => main_controllers_1.allTypeProducts(req, res, `${i.toString()}`));
 }
 //productLink
 for (let i of equipos) {

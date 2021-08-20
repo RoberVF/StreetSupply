@@ -1,11 +1,12 @@
 import {Router, Request, Response} from 'express'
 const router= Router()
-import {mainPage, comprar, getData, createData, incluirDatos, verDatos, productCards, productLink} from '../controllers/main.controllers'
+import {mainPage, page, getData, createData, incluirDatos, verDatos, productCards, productLink, allTypeProducts} from '../controllers/main.controllers'
 
 router.route('/').get((req, res) => mainPage(req, res, "index"))
 router.route('/mobile').get((req, res) => mainPage(req, res, "mobile"))
 
-router.route('/comprar').get(comprar)
+router.route('/comprar').get((req,res) => page(req,res,"pages/comprar"))
+router.route('/ropa').get((req,res) => page(req,res,"pages/ropa"))
 
 router.route('/mostrarDatos').post(createData).get(getData)
 
@@ -17,19 +18,33 @@ router.route('/verDatos').get(verDatos)
 
 //Lista equipos
 const equipos= [
-    "PSG", "Lyon", "City", "United"
+    "LIV", "CITY", "UNITED", "CHE", "ARS", "TOT",
+    "BAR", "RMA", "ATM",
+    "JUV", "INT", "ACM", "ROMA",
+    "PSG", "MAR", "LYON",
+    "DORT", "BAYERN", "LEIP"
 ]
 
+//lista types
+const types= [
+    "camisetas", "tracksuits", "cortavientos", "pantalones", "t-shirts", "training", "portero", "retro"
+]
 
-//productCards
+//productCards via teams
 for(let i of equipos){
-    router.route(`/${i.toString()}`).get((req, res) => productCards(req, res, i.toString(), "ligue 1"))
+    router.route(`/${i.toString()}`).get((req, res) => productCards(req, res, i.toString(), ""))
+}
+
+//productCards via type
+for(let i of types){
+    router.route(`/${i.toString()}`).get((req, res) => allTypeProducts(req, res, `${i.toString()}`))
 }
 
 //productLink
 for(let i of equipos){
     router.route(`/${i.toString()}/:id`).get(productLink)
 }
+
 
 
 module.exports= router

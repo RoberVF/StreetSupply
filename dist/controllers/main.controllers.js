@@ -3,7 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.productLink = exports.productCards = exports.verDatos = exports.incluirDatos = exports.getData = exports.createData = exports.comprar = exports.mainPage = void 0;
+exports.allTypeProducts = exports.productLink = exports.productCards = exports.verDatos = exports.incluirDatos = exports.getData = exports.createData = exports.page = exports.mainPage = void 0;
 const Data_1 = __importDefault(require("../models/Data"));
 async function mainPage(req, res, page) {
     const teamProduct = await Data_1.default.find({ "top": "True" });
@@ -12,12 +12,12 @@ async function mainPage(req, res, page) {
     });
 }
 exports.mainPage = mainPage;
-async function comprar(req, res) {
-    res.render("comprar");
+async function page(req, res, page) {
+    res.render(`${page}`);
 }
-exports.comprar = comprar;
+exports.page = page;
 async function createData(req, res) {
-    const { name, price, team, liga, year, top, imagePath, imagePath2, imagePath3 } = req.body;
+    const { name, price, team, liga, year, top, type, imagePath, imagePath2, imagePath3 } = req.body;
     const newData = {
         name,
         price,
@@ -25,6 +25,7 @@ async function createData(req, res) {
         liga,
         year,
         top,
+        type,
         imagePath,
         imagePath2,
         imagePath3
@@ -37,9 +38,12 @@ async function createData(req, res) {
     });
 }
 exports.createData = createData;
-async function getData(req, res) {
-    const datas = await Data_1.default.find();
-    return res.json(datas);
+// export async function getData(req:Request, res:Response): Promise<Response>{
+//     const datas= await Data.find()
+//     return res.json(datas)
+// }
+function getData(req, res) {
+    res.redirect("pages/incluirDatos");
 }
 exports.getData = getData;
 async function incluirDatos(req, res) {
@@ -68,3 +72,10 @@ async function productLink(req, res) {
     res.render('teams/product', { product });
 }
 exports.productLink = productLink;
+async function allTypeProducts(req, res, type) {
+    const teamProduct = await Data_1.default.find({ "type": `${type}` });
+    res.render(`pages/productCardsType`, {
+        teamProduct
+    });
+}
+exports.allTypeProducts = allTypeProducts;

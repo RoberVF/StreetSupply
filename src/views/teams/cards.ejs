@@ -16,8 +16,12 @@
 <body>
     <%- include('../utils/navbar') %>
         <div class="bg-container">
+            <%- include('../utils/leaguesNavbar') %>
+
             <div class="title-container">
-                <h2>Productos</h2>
+                <% teamProduct.forEach((item)=>{ %>
+                    <h2><%= item.team %></h2>
+                <% }) %>
             </div>
             <!-- <img class="card-header-image" src="images/header-card-product.jpg" alt="header"> -->
             <%- include('../utils/productCards') %>

@@ -14,16 +14,9 @@
 }
 .bg-container{
     margin-left: 78px;
-    overflow-y: hidden;
+    overflow-x: hidden;
 }
-.title-container{
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.title-container > h2:nth-child(1){
+.bg-container > h2:nth-child(1){
     color: var(--light-purple);
     font-family: "Permanent Marker";
     width: 100%;
@@ -31,8 +24,10 @@
     align-items: center;
     justify-content: center;
     margin-top: 2rem;
+    position: relative;
+    visibility: visible;
 }
-.title-container > h2:nth-child(n+2){
+.bg-container > h2:nth-child(n+2){
     position: absolute;
     visibility: hidden;
 }

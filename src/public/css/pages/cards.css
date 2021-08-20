@@ -17,17 +17,22 @@
     overflow-y: hidden;
 }
 .title-container{
-    margin-top: 2rem;
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.title-container > h2{
-    font-family: "Permanent Marker";
+.title-container > h2:nth-child(1){
     color: var(--light-purple);
-    padding: 1.2rem 1.8rem;
-    background-color: var(--light-white);
-    border-radius: 12px 3px 12px 3px;
+    font-family: "Permanent Marker";
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2rem;
+}
+.title-container > h2:nth-child(n+2){
+    position: absolute;
+    visibility: hidden;
 }

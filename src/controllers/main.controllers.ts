@@ -1,7 +1,6 @@
 import {Request, Response} from 'express'
 import Data from '../models/Data'
-import fs from 'fs-extra'
-import path from 'path'
+
 
 export async function mainPage(req:Request, res:Response, page:string){
     const teamProduct= await Data.find({"top": "True"})
@@ -10,12 +9,13 @@ export async function mainPage(req:Request, res:Response, page:string){
     })
 }
 
-export async function comprar(req:Request, res:Response){
-    res.render("comprar")
+export async function page(req:Request, res:Response, page:string){
+    res.render(`${page}`)
 }
 
+
 export async function createData(req:Request, res:Response){
-    const {name, price, team, liga, year, top, imagePath, imagePath2, imagePath3} = req.body
+    const {name, price, team, liga, year, top, type, imagePath, imagePath2, imagePath3} = req.body
     
     const newData= {
         name,
@@ -24,6 +24,7 @@ export async function createData(req:Request, res:Response){
         liga,
         year,
         top,
+        type,
         imagePath,
         imagePath2,
         imagePath3
@@ -37,9 +38,12 @@ export async function createData(req:Request, res:Response){
     })
 }
 
-export async function getData(req:Request, res:Response): Promise<Response>{
-    const datas= await Data.find()
-    return res.json(datas)
+// export async function getData(req:Request, res:Response): Promise<Response>{
+//     const datas= await Data.find()
+//     return res.json(datas)
+// }
+export function getData(req:Request, res:Response){
+    res.redirect("pages/incluirDatos")
 }
 
 export async function incluirDatos(req:Request, res:Response){
@@ -67,4 +71,12 @@ export async function productLink(req:Request, res:Response){
     const { id }= req.params
     const product= await Data.findById(id)
     res.render('teams/product', { product })
+}
+
+export async function allTypeProducts(req:Request, res:Response, type:string){
+    const teamProduct= await Data.find({"type": `${type}`})
+
+    res.render(`pages/productCardsType`, {
+        teamProduct
+    })
 }
