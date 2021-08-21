@@ -75,8 +75,16 @@ export async function productLink(req:Request, res:Response){
 
 export async function allTypeProducts(req:Request, res:Response, type:string){
     const teamProduct= await Data.find({"type": `${type}`})
-
     res.render(`pages/productCardsType`, {
+        teamProduct
+    })
+}
+
+export async function allTypeTeamProducts(req:Request, res:Response, type:string, team:string){
+    const typeProduct= await Data.find({"type": `${type}`})
+    const teamProduct= await Data.find({"team": `${team}`})
+    res.render(`utils/allTypeTeamNavbar`,{
+        typeProduct,
         teamProduct
     })
 }

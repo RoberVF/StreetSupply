@@ -3,7 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.allTypeProducts = exports.productLink = exports.productCards = exports.verDatos = exports.incluirDatos = exports.getData = exports.createData = exports.page = exports.mainPage = void 0;
+exports.allTypeTeamProducts = exports.allTypeProducts = exports.productLink = exports.productCards = exports.verDatos = exports.incluirDatos = exports.getData = exports.createData = exports.page = exports.mainPage = void 0;
 const Data_1 = __importDefault(require("../models/Data"));
 async function mainPage(req, res, page) {
     const teamProduct = await Data_1.default.find({ "top": "True" });
@@ -79,3 +79,12 @@ async function allTypeProducts(req, res, type) {
     });
 }
 exports.allTypeProducts = allTypeProducts;
+async function allTypeTeamProducts(req, res, type, team) {
+    const typeProduct = await Data_1.default.find({ "type": `${type}` });
+    const teamProduct = await Data_1.default.find({ "team": `${team}` });
+    res.render(`utils/allTypeTeamNavbar`, {
+        typeProduct,
+        teamProduct
+    });
+}
+exports.allTypeTeamProducts = allTypeTeamProducts;

@@ -30,6 +30,13 @@ for (let i of equipos) {
 for (let i of types) {
     router.route(`/${i.toString()}`).get((req, res) => main_controllers_1.allTypeProducts(req, res, `${i.toString()}`));
 }
+//productCards via type & teams
+for (let i of types) {
+    for (let j of equipos) {
+        router.route(`/${i.toString()}/${j.toString()}`).get((req, res) => main_controllers_1.allTypeTeamProducts(req, res, `${i.toString()}`, `${j.toString()}`));
+    }
+    //Manera de que cada paginaType redireccione a cada paginaTeam
+}
 //productLink
 for (let i of equipos) {
     router.route(`/${i.toString()}/:id`).get(main_controllers_1.productLink);
